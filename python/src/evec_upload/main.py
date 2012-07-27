@@ -1,3 +1,4 @@
+# coding=utf-8
 # python
 #    EVE-Central.com Contribtastic
 #    Copyright (C) 2005-2010 Yann Ramin
@@ -75,7 +76,7 @@ class MainFrame(wx.Frame):
         config = Config()
         r = config.reinit
         if r == -1:
-            dlg = wx.MessageDialog(self, """The uploader client configuration has been reset since an old configuration file was found.    Please check your configuration (such as path).""", 'Client Upgrade', wx.OK | wx.ICON_INFORMATION)
+            dlg = wx.MessageDialog(self, u"""已重置配置文件""", 'Client Upgrade', wx.OK | wx.ICON_INFORMATION)
             dlg.ShowModal()
             dlg.Destroy()
 
@@ -120,15 +121,15 @@ class MainFrame(wx.Frame):
         # add an item to the menu, using \tKeyName automatically
         # creates an accelerator, the third param is some help text
         # that will show up in the statusbar
-        menu.Append(self.MENU_SCANNOW, "S&can now...")
+        menu.Append(self.MENU_SCANNOW, u"立即扫描...(&C)")
         menu.AppendSeparator()
 
         #menu.Append(self.MENU_SETTINGS, "&Settings...")
         #menu.Append(self.MENU_LOCATE, "&Locate cache folder...")
 
-        menu.Append(wx.ID_EXIT, "E&xit\tAlt-X", "Exit")
+        menu.Append(wx.ID_EXIT, u"退出(&X)\tAlt-X", "Exit")
 
-        helpmenu.Append(self.MENU_ABOUT, "&About")
+        helpmenu.Append(self.MENU_ABOUT, u"关于(&A)")
 
         # bind the menu event to an event handler
         self.Bind(wx.EVT_MENU, self.OnTimer, id=self.MENU_SCANNOW)
@@ -137,19 +138,19 @@ class MainFrame(wx.Frame):
         self.Bind(wx.EVT_CLOSE, self.OnTimeToClose)
 
         # and put the menu on the menubar
-        menuBar.Append(menu, "&File")
+        menuBar.Append(menu, u"文件(&F)")
 
-        menuBar.Append(helpmenu, "&Help")
+        menuBar.Append(helpmenu, u"帮助(&H)")
         self.SetMenuBar(menuBar)
 
         self.CreateStatusBar()
-        self.SetStatusText("Idle")
+        self.SetStatusText(u"空闲")
 
         # Now create the Panel to put the other controls on.
         panel = wx.Panel(self)
 
-        self.pathtext = wx.StaticText(panel, -1, "Please wait...")
-        self.pathtext_l = wx.StaticText(panel, -1, "Using folder:  Autodetecting folders.")
+        self.pathtext = wx.StaticText(panel, -1, u"请稍候...")
+        self.pathtext_l = wx.StaticText(panel, -1, u"EVE缓存文件夹: 自动识别")
 
         #self.usertext_l = wx.StaticText(panel, -1, "Character name:  ")
         #self.usertext = wx.StaticText(panel, -1, "...")
@@ -212,7 +213,7 @@ class MainFrame(wx.Frame):
 
 
         self.pathtext.SetLabel("")
-        self.uploadtext.SetLabel("Uploads so far: " + `self.uploads`[:-1] + "  Scans so far: " + `self.scans`)
+        self.uploadtext.SetLabel(u"已上传: " + `self.uploads`[:-1] + u"  已扫描: " + `self.scans`)
 
     def OnTimeToClose(self, evt):
         """Event handler for the button click."""
@@ -223,18 +224,18 @@ class MainFrame(wx.Frame):
     def OnUploadUpdate(self, evt):
 
         self.uploads = self.uploads + 1
-        self.SetStatusText("Uploaded " + evt.typename)
+        self.SetStatusText(u"已上传 " + evt.typename)
         self.load_infowidgets()
 
     def OnUploadDone(self, evt):
 
         self.load_infowidgets()
         if evt.success == True:
-            self.SetStatusText("Idle - Uploaded " + `evt.count` + " last run")
+            self.SetStatusText(u"空闲 - 上次上传了 " + `evt.count` + u" 份数据")
             self.scans += 1
             self.load_infowidgets()
         else:
-            self.SetStatusText("Error scanning directory! Check EVE path!")
+            self.SetStatusText(u"无法找到EVE缓存文件.")
 
     def OnAbout(self, evt):
         global ProgramVersionNice
@@ -247,7 +248,7 @@ class MainFrame(wx.Frame):
 
     def OnTimer(self, evt):
         config = Config()
-        self.SetStatusText("Uploading...")
+        self.SetStatusText(u"上传中...")
 
         if not self.paths or self.paths_age > (time.time() + (60*60*24)):
             self.paths = default_locations()
@@ -271,7 +272,7 @@ class MainFrame(wx.Frame):
 class EVEc_Upload(wx.App):
     def OnInit(self):
 
-        frame = MainFrame(None, "Contribtastic!")
+        frame = MainFrame(None, u"国服市场数据采集!")
         self.SetTopWindow(frame)
         config = Config()
         show = True

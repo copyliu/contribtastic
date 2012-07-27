@@ -39,7 +39,7 @@ class Config(object):
         try:
             import wx
             sp = wx.StandardPaths.Get()
-            wx.GetApp().SetAppName("EVE-Central MarketUploader")
+            wx.GetApp().SetAppName("EVE-Serenity MarketUploader")
             path = sp.GetUserLocalDataDir()
 
             try:
@@ -53,7 +53,7 @@ class Config(object):
 
         if not len(self.filename):
             try:
-                self.filename = os.path.normpath( os.path.join( os.environ['HOME'], '.contribtastic.pickle' ) )
+                self.filename = os.path.normpath( os.path.join( os.environ['HOME'], '.Serenity.pickle' ) )
             except:
                 pass
 
