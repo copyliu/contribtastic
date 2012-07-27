@@ -91,7 +91,7 @@ def default_locations():
     # Now try to find the most relevant cache folder
 
     print "Starting to scan from ",document_folder
-    rex = re.compile('cache/MachoNet/87\.237\.38\.200/([0-9]+)/CachedMethodCalls$')
+    rex = re.compile('cache/MachoNet/211\.144\.214\.68/([0-9]+)/CachedMethodCalls$')
     def walker(arg, dirname, fnames):
         match = rex.search(dirname.replace('\\', '/'))
         if not match:

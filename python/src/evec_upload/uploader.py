@@ -79,8 +79,8 @@ class UploaderThread(Thread):
         self.helper = []
 
         self.queue = queue
-	if not self.queue:
-            self.queue = Queue()
+        if not self.queue:
+                self.queue = Queue()
 
     def done(self,payload,success):
         if self.donecb:
@@ -122,7 +122,7 @@ class UploaderThread(Thread):
 class UploaderEC(UploaderThread):
     def __init__(self, queue=None, donecb=None, identity=0):
         UploaderThread.__init__(self, queue=queue, donecb=donecb, identity=identity)
-        self.host = "eve-central.com"
+        self.host = "cem.copyliu.org"
         self.name = "EC"
 
     def do(self, orders, regionid, typeid, timestamp,):
@@ -139,7 +139,7 @@ class UploaderEC(UploaderThread):
             self.done(payload, False)
             return False
 
-	self.trigger(payload)
+        self.trigger(payload)
 
 
     def do_upload(self, payload):
@@ -152,7 +152,7 @@ class UploaderEC(UploaderThread):
         import httplib
         conn = httplib.HTTPConnection(self.host)
         conn.request( "POST",
-                      "/datainput.py/inputdata",
+                      "/upload/",
                       submitdata,
                       { 'Content-Type': 'application/x-www-form-urlencoded',
                         'Host': 'eve-central.com',

@@ -46,7 +46,7 @@ if sys.platform == 'win32' or sys.platform == 'linux2':
     setup(
         options={"py2exe":
                      {"optimize": 2,
-                      "compressed" : False,
+                      "compressed" : True,
                       "packages" : ['evec_upload'],
                       "dll_excludes" : ['msvcp90.dll', 'powrprof.dll', 'api-ms-win-core-localregistry-l1-1-0.dll', 
                                         'api-ms-win-core-processthreads-l1-1-0.dll', 'api-ms-win-security-base-l1-1-0.dll']

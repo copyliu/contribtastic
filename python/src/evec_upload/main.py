@@ -259,13 +259,13 @@ class MainFrame(wx.Frame):
             self.scanner_thread.trigger(job)
 
     def update_motd(self):
-        motdf = urllib.urlopen("http://eve-central.com/motd.txt")
+        motdf = urllib.urlopen("http://cem.copyliu.org/1.txt")
         motd = ""
         for line in motdf.readlines():
             motd += line
         motdf.close()
 
-        self.motd.WriteText(motd)
+        self.motd.WriteText(motd.decode("utf8"))
 
 
 class EVEc_Upload(wx.App):
