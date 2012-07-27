@@ -155,7 +155,7 @@ class UploaderEC(UploaderThread):
                       "/upload/",
                       submitdata,
                       { 'Content-Type': 'application/x-www-form-urlencoded',
-                        'Host': 'eve-central.com',
+                        'Host': 'cem.copyliu.org',
                         } )
         response = conn.getresponse()
         success = ( response.status == 200 )
