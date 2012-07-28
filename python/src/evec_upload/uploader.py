@@ -143,30 +143,32 @@ class UploaderEC(UploaderThread):
 
 
     def do_upload(self, payload):
+        try:
+            submitdata = urllib.urlencode({'typename' : "", 'data' : payload.body,
+                                       'userid': self.identity,
+                                       'timestamp': payload.timestamp, 'cache': True,
+                                       'region' : payload.regionid, 'typeid' : payload.typeid})
 
-        submitdata = urllib.urlencode({'typename' : "", 'data' : payload.body,
-                                   'userid': self.identity,
-                                   'timestamp': payload.timestamp, 'cache': True,
-                                   'region' : payload.regionid, 'typeid' : payload.typeid})
+            import httplib
+            conn = httplib.HTTPConnection(self.host)
+            conn.request( "POST",
+                          "/upload/",
+                          submitdata,
+                          { 'Content-Type': 'application/x-www-form-urlencoded',
+                            'Host': 'cem.copyliu.org',
+                            } )
+            response = conn.getresponse()
+            success = ( response.status == 200 )
 
-        import httplib
-        conn = httplib.HTTPConnection(self.host)
-        conn.request( "POST",
-                      "/upload/",
-                      submitdata,
-                      { 'Content-Type': 'application/x-www-form-urlencoded',
-                        'Host': 'cem.copyliu.org',
-                        } )
-        response = conn.getresponse()
-        success = ( response.status == 200 )
+            if not success:
+                print response.status, response.reason
+                print response.read()
+            conn.close()
 
-        if not success:
-            print response.status, response.reason
-            print response.read()
-        conn.close()
-
-        self.done(payload, success)
-        return success
+            self.done(payload, success)
+            return success
+        except :
+            return False
 
 
 

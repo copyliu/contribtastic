@@ -33,7 +33,7 @@ class ProtocolVersionMismatch(exceptions.Exception):
 
 
 def check_protocol():
-    pc = urllib.urlopen("http://eve-central.com/protocol_version.txt")
+    pc = urllib.urlopen("http://cem.copyliu.org/protocol_version.txt")
     version = pc.readline().strip()
     pc.close()
     if version != "1":
@@ -42,7 +42,7 @@ def check_protocol():
 
 def check_client():
     global ProgramVersion
-    cv = urllib.urlopen("http://eve-central.com/client_version.txt")
+    cv = urllib.urlopen("http://cem.copyliu.org/client_version.txt")
     fversion = cv.readline().strip()
     version = cv.readline().strip()
     version = int(version)
