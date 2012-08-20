@@ -54,7 +54,7 @@ class MainFrame(wx.Frame):
             check_protocol()
             r = check_client()
             if r is not True:
-                dlg = wx.MessageDialog(self, u'發現新版本 ' + `r` + ' ! 請訪問 EVE 國服市場中心獲得新版本!', u'舊版本提醒',
+                dlg = wx.MessageDialog(self, u'發現新版本 ' + `r` + u' ! 請訪問 EVE 國服市場中心獲得新版本!', u'舊版本提醒',
                                        wx.OK | wx.ICON_ERROR
                                        )
                 dlg.ShowModal()
