@@ -56,8 +56,17 @@ if sys.platform == 'win32' or sys.platform == 'linux2':
                 "script": "src/uploader.py",
                 "icon_resources": [(1, "images/evec_all.ico")] ,
                 "other_resources": [(24,1,manifest)]
-                }
+                },
+                
+                
             ],
+        console=[{
+                "script": "src/uploader.py",
+                "icon_resources": [(1, "images/evec_all.ico")] ,
+                "other_resources": [(24,1,manifest)],
+                "dest_base":"uploader_console",
+                },],
+                
         data_files=["images/evec_all.ico"]
         )
 

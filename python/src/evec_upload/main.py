@@ -54,17 +54,17 @@ class MainFrame(wx.Frame):
             check_protocol()
             r = check_client()
             if r is not True:
-                dlg = wx.MessageDialog(self, 'Client outdated! New version ' + `r` + ' available! Visit EVE-Central.com to update!', 'Outdated client',
+                dlg = wx.MessageDialog(self, u'發現新版本 ' + `r` + ' ! 請訪問 EVE 國服市場中心獲得新版本!', u'舊版本提醒',
                                        wx.OK | wx.ICON_ERROR
                                        )
                 dlg.ShowModal()
                 dlg.Destroy()
-                os.system("explorer http://eve-central.com")
+                os.system("explorer http://cem.copyliu.org")
                 sys.exit(-1)
 
         except IOError:
-            dlg = wx.MessageDialog(self, 'The network appears to be down. I cannot reach EVE-central.com. Check your firewall settings or internet connection',
-                                   'Can\'t communicate with EVE-Central.com',
+            dlg = wx.MessageDialog(self, u'無法訪問網絡, 請確認網絡設置是否正確',
+                                   u'無法訪問網絡',
                                    wx.OK | wx.ICON_ERROR
                                    )
             dlg.ShowModal()

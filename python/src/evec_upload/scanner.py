@@ -24,7 +24,7 @@ import urllib
 import stat
 from cStringIO import StringIO
 import time
-
+#print sys.getfilesystemencoding()
 
 try:
     from win32com.shell import shell, shellcon
@@ -76,6 +76,10 @@ def default_locations():
             document_folder = os.path.join( shell.SHGetFolderPath( 0,
                                                                    shellcon.CSIDL_LOCAL_APPDATA,
                                                                    0, 0 ), 'CCP', 'EVE', )
+            #DEBUG.
+            #print document_folder
+            #document_folder = u"c:\\Users\\\u5c0f\u5c0f\u7136"
+            
         except Exception,e:
             print e
             pass
@@ -202,7 +206,7 @@ def scan_data(job):
         print "Now scanning",item, statinfo.st_mtime, highest_timestamp
 
         try:
-            market_parser = evecache.MarketParser(str(item))
+            market_parser = evecache.MarketParser(item.encode(sys.getfilesystemencoding()))
             if market_parser.valid() == True:
                 entries = market_parser.getList()
 
