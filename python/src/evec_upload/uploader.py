@@ -122,7 +122,7 @@ class UploaderThread(Thread):
 class UploaderEC(UploaderThread):
     def __init__(self, queue=None, donecb=None, identity=0):
         UploaderThread.__init__(self, queue=queue, donecb=donecb, identity=identity)
-        self.host = "cem.copyliu.org"
+        self.host = "www.ceve-market.org"
         self.name = "EC"
 
     def do(self, orders, regionid, typeid, timestamp,):
@@ -155,7 +155,7 @@ class UploaderEC(UploaderThread):
                           "/upload/",
                           submitdata,
                           { 'Content-Type': 'application/x-www-form-urlencoded',
-                            'Host': 'cem.copyliu.org',
+                            'Host': 'www.ceve-market.org',
                             } )
             response = conn.getresponse()
             success = ( response.status == 200 )

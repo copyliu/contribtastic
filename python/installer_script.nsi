@@ -2,7 +2,7 @@
 
 ; HM NIS Edit Wizard helper defines
 !define PRODUCT_NAME "EVE国服市场数据收集器"
-!define PRODUCT_VERSION "2.1.1"
+!define PRODUCT_VERSION "2.1.2"
 !define PRODUCT_PUBLISHER "StackFoundry LLC"
 !define PRODUCT_WEB_SITE "http://copyliu.org"
 !define PRODUCT_DIR_REGKEY "Software\Microsoft\Windows\CurrentVersion\App Paths\uploader.exe"

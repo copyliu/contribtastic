@@ -59,7 +59,7 @@ class MainFrame(wx.Frame):
                                        )
                 dlg.ShowModal()
                 dlg.Destroy()
-                os.system("explorer http://cem.copyliu.org")
+                os.system("explorer http://www.ceve-market.org")
                 sys.exit(-1)
 
         except IOError:
@@ -260,7 +260,7 @@ class MainFrame(wx.Frame):
             self.scanner_thread.trigger(job)
 
     def update_motd(self):
-        motdf = urllib.urlopen("http://cem.copyliu.org/1.txt")
+        motdf = urllib.urlopen("http://www.ceve-market.org/app/motd.txt")
         motd = ""
         for line in motdf.readlines():
             motd += line
