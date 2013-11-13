@@ -22,9 +22,9 @@ import exceptions
 import sys
 import urllib
 
-ProgramVersion = 2012
-ProgramVersionNice = "2.1.2"
-CheckVersion = 2012
+ProgramVersion = 2013
+ProgramVersionNice = "2.1.3"
+CheckVersion = 2013
 
 
 
