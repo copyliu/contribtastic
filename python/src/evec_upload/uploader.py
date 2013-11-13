@@ -159,7 +159,9 @@ class UploaderEC(UploaderThread):
                             } )
             response = conn.getresponse()
             success = ( response.status == 200 )
-
+            print "Response complete"
+            print response.status
+            print response.reason
             if not success:
                 print response.status, response.reason
                 print response.read()
