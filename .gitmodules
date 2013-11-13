@@ -1,6 +1,6 @@
 [submodule "libevecache"]
 	path = libevecache
-	url = https://github.com/theatrus/libevecache.git
+	url = git@github.com:copyliu/libevecache.git
 [submodule "cocoa/SCEvents"]
 	path = cocoa/SCEvents
 	url = https://github.com/mz2/SCEvents
